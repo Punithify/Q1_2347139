@@ -1,49 +1,41 @@
 randList = []
-
-for i in range(2, 15):
-    randList.append(i)
-
+[randList.append(i) for i in range(2, 15)]
 print(randList)
+
 # a
 divisibleList = []
-
-
-for num in randList:
-    if (num % 3 == 0):
-        divisibleList.append(num)
-
-print(divisibleList)
+[divisibleList.append(num) if (num % 3 == 0) else [] for num in randList]
+print("numbers divisible by 3 are : ", divisibleList)
 
 # b
 squares = []
-for x in range(1, 6):
-    squares.append(x**2)
-print(squares)
+[squares.append(x**2) for x in randList]
+print("List of squares", squares)
 
 # c
 evenList = []
-for i in randList:
-    if (i % 2 == 0):
-        evenList.append(i)
-print(evenList)
+[evenList.append(i) if (i % 2 == 0) else [] for i in randList]
+print("Even List : ", evenList)
 sum = 0
-print([i+i for i in evenList])
-for i in evenList:
-    sum = sum+i
-print(sum)
+[sum := sum+i for i in evenList]
+print("Sum of evenlist : ", sum)
 
 # d
 reapList = [1, 5, 57, 0, 7, 7]
-print(set(reapList))
+print("List with duplicate values : ", reapList)
+print("Sorted List : ", sorted(list(set(reapList))))
+# int object are not iteratable
+# [reapList.append(set(i)) for i in range(len(reapList))]
+# print(reapList)
+
+# 2
+users = {"bob": "admin", "rob": "user 2FA", "jack":
+         "user", "jim": "user"}
+print("Users on the platform :", users)
 
 
-# b
-companyDel = {"Virat Kohli": "5 November 1988", "Umesh Yadav": "25 October 1987", "Manish Pandey":
-              "10 September 1989", "Rohit Sharma": "30 April 1987", "Ravindra Jadeja": "6 December 1988", "Hardik Pandya": "11 October 1993"}
+def userType(name):
+    print(name, "is a :", users.get(name))
 
 
-def brithDate(name):
-    print(companyDel.get(name))
-
-
-brithDate("Virat Kohli")
+userType("bob")
